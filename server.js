@@ -11,6 +11,12 @@ app.get('/api/data', (req, res) => {
   res.json(data);
 });
 
+require('./bot.js');  // bot.js fon rejimida ishga tushadi
+
+app.get('/', (req, res) => {
+  res.send('Server ishga tushdi va bot ham ishlayapti!');
+});
+
 app.post('/api/add', (req, res) => {
   const { name, date, amount } = req.body;
   let data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));

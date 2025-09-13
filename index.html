@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ishchilar to‘lovlari</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="p-3">
+  <h1>Ishchilar to‘lovlari</h1>
+
+  <form id="paymentForm" class="mb-3">
+    <!-- Ism select -->
+    <select id="name" class="form-control mb-2" required>
+      <option value="">Ishchini tanlang</option>
+    </select>
+
+    <input type="number" id="amount" class="form-control mb-2" placeholder="Summasi" required>
+    <button type="submit" class="btn btn-primary">Saqlash</button>
+  </form>
+
+  <h2>Ishchilar ro‘yxati</h2>
+  <div id="workersList" class="list-group mb-3"></div>
+
+  <div id="workerDetails"></div>
+
+<script>
+// Form submit
+const form = document.getElementById('paymentForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const today = new Date();
+  const date = today.toISOString().split('T')[0];
+  const amount = parseInt(document.getElementById('amount').value);
+
+  await fetch('/api/add', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name, date, amount})
+  });
+
+  loadData();
+  form.reset();
+});
+
+// Ishchilar ro‘yxatini yuklash va select’ga qo‘yish
+function fillSelect(data) {
+  const select = document.getElementById('name');
+  select.innerHTML = '<option value="">Ishchini tanlang</option>';
+  data.forEach(worker => {
+    const opt = document.createElement('option');
+    opt.value = worker.name;
+    opt.textContent = worker.name;
+    select.appendChild(opt);
+  });
+}
+
+// Ishchilar ro‘yxatini pastda ko‘rsatish
+function fillWorkersList(data) {
+  const list = document.getElementById('workersList');
+  list.innerHTML = '';
+  data.forEach(worker => {
+    const a = document.createElement('a');
+    a.href = '#';
+    a.className = 'list-group-item list-group-item-action';
+    a.textContent = worker.name;
+    a.addEventListener('click', () => showWorkerDetails(worker));
+    list.appendChild(a);
+  });
+}
+
+// Tanlangan ishchining to‘lovlarini ko‘rsatish
+function showWorkerDetails(worker) {
+  const details = document.getElementById('workerDetails');
+  let total = 0;
+  let html = `<h3>${worker.name} to‘lovlari</h3>`;
+  html += `<table class="table"><thead><tr><th>Sana</th><th>Summasi</th></tr></thead><tbody>`;
+  worker.payments.forEach(p => {
+    total += p.amount;
+    html += `<tr><td>${p.date}</td><td>${p.amount.toLocaleString()}</td></tr>`;
+  });
+  html += `</tbody></table>`;
+  html += `<p><strong>Umumiy:</strong> ${total.toLocaleString()} so‘m</p>`;
+  details.innerHTML = html;
+}
+
+// Ma’lumotlarni yuklash
+async function loadData() {
+  const res = await fetch('/api/data');
+  const data = await res.json();
+  fillSelect(data);
+  fillWorkersList(data);
+  document.getElementById('workerDetails').innerHTML = '';
+}
+
+// birinchi yuklash
+loadData();
+</script>
+</body>
+</html>

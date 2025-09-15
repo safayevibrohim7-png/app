@@ -1,58 +1,116 @@
 [
   {
-    "name": "Ibrohim ",
+    "name": "Дониёр ",
     "payments": [
-      {
-        "date": "2025-09-13",
-        "amount": 200000
-      },
-      {
-        "date": "2025-09-14",
-        "amount": 200000
-      },
-      {
-        "date": "2025-05-13",
-        "amount": 400000
-      }
+
     ]
   },
   {
-    "name": "Man",
+    "name": "Равшан",
     "payments": [
-      {
-        "date": "2025-09-13",
-        "amount": 150000
-      },
-      {
-        "date": "2025-09-13",
-        "amount": 250000
-      },
-      {
-        "date": "2025-09-13",
-        "amount": 120000
-      }
+
     ]
   },
   {
-    "name": "Hakim",
+    "name": "Ахмаджон",
     "payments": [
-      {
-        "date": "2025-09-13",
-        "amount": 125000
-      }
+
     ]
   },
   {
-    "name": "Adham",
+    "name": "Хаким",
     "payments": [
-      {
-        "date": "2025-09-11",
-        "amount": 190000
-      },
-      {
-        "date": "2025-09-13",
-        "amount": 111111111111
-      }
+
+    ]
+  },
+    {
+    "name": "Собир",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Вася",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Рустам",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Бахтиёр",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Валера",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Азиз",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Илхом",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Урал",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Дилшод",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Комолхужа",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Рузибой",
+    "payments": [
+
+    ]
+  },
+  {
+    "name": "Жовохир",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Ортик",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Бахтиёр котта",
+    "payments": [
+
+    ]
+  },
+    {
+    "name": "Жуманазар",
+    "payments": [
+
     ]
   }
 ]
